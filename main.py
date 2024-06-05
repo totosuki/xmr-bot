@@ -1,5 +1,6 @@
 import discord
 import config
+import xmr
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -17,5 +18,14 @@ async def on_ready():
 ) 
 async def test(interaction: discord.Interaction): 
     await interaction.response.send_message('Hello, World!')
+
+@tree.command(
+    name = "xmr-balance",
+    description = "現在のXMR残高を日本円で表示する"
+)
+async def xmr_balance(interaction: discord.Interaction):
+    await interaction.response.defer()
+    balance = xmr.return_balance()
+    await interaction.followup.send(f"現在のXMR残高は{balance:.2f}円です")
 
 client.run(config.TOKEN)
