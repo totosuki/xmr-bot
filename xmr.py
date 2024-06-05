@@ -16,3 +16,15 @@ def return_balance():
     xmr_yen = float(elems[0].text.translate(str.maketrans({"¥":"",",":""})))
     
     return balance * xmr_yen
+
+def return_hashrate(hour: int):
+    if hour:
+        url = f"https://api.nanopool.org/v1/xmr/avghashratelimited/{config.ADDRESS}/{hour}"
+        res = requests.get(url)
+        ave_hashrate = res.json()["data"]
+        return ave_hashrate
+    else:
+        url = f"https://api.nanopool.org/v1/xmr/hashrate/{config.ADDRESS}"
+        res = requests.get(url)
+        current_hashrate = res.json()["data"]
+        return current_hashrate
