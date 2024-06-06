@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import config
 
-def return_balance():
+def return_balance() -> float:
     # nanominerに溜まってるXMRを取得
     url = f"https://api.nanopool.org/v1/xmr/balance/{config.ADDRESS}"
     res = requests.get(url)
@@ -17,7 +17,7 @@ def return_balance():
     
     return balance * xmr_yen
 
-def return_hashrate(hour: int):
+def return_hashrate(hour: int) -> float:
     if hour:
         url = f"https://api.nanopool.org/v1/xmr/avghashratelimited/{config.ADDRESS}/{hour}"
         res = requests.get(url)
