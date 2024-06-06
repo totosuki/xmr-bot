@@ -25,7 +25,7 @@ async def test(interaction: discord.Interaction):
 )
 async def xmr_help(interaction: discord.Interaction):
     await interaction.response.defer()
-    embed = discord.Embed(title="XMRボットのヘルプ", description="XMRボットのコマンド一覧です")
+    embed = discord.Embed(title="XMRボットのヘルプ", description="XMRボットのコマンド一覧です", color=config.GREEN)
     embed.add_field(name="xmr-balance", value="現在のXMR残高を日本円で表示する", inline=False)
     embed.add_field(name="xmr-hashrate hour(default=2)", value="平均ハッシュレートを表示する\n`hour = 0` にすると現在のハッシュレートを表示する", inline=False)
     embed.add_field(name="xmr-help", value="XMRボットのヘルプを表示する", inline=False)
