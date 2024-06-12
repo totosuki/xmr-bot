@@ -12,12 +12,14 @@ async def on_ready():
     print('XMRボットがログインしました') 
     await tree.sync()
 
-@tree.command (
-    name='hello',
-    description='Say hello to the world!'
-) 
-async def test(interaction: discord.Interaction): 
-    await interaction.response.send_message('Hello, World!')
+@tree.command(
+    name = "xmr-address",
+    description="XMRのアドレスを表示する"
+)
+async def xmr_address(interaction: discord.Interaction):
+    await interaction.response.defer()
+    embed = discord.Embed(title="XMRアドレス", description=config.ADDRESS, color=config.GREEN)
+    await interaction.followup.send(embed=embed)
 
 @tree.command(
     name = "xmr-balance",
