@@ -54,6 +54,7 @@ async def xmr_help(interaction: discord.Interaction):
     embed.add_field(name="xmr-balance", value="現在のXMR残高を日本円で表示する", inline=False)
     embed.add_field(name="xmr-hashrate hour(default=2)", value="平均ハッシュレートを表示する\n`hour = 0` にすると現在のハッシュレートを表示する", inline=False)
     embed.add_field(name="xmr-help", value="XMRボットのヘルプを表示する", inline=False)
+    embed.add_field(name="xmr-address", value="設定されているXMRのアドレスを表示する", inline=False)
     await interaction.followup.send(embed=embed)
 
 client.run(config.TOKEN)
