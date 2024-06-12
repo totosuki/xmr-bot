@@ -38,7 +38,8 @@ async def xmr_help(interaction: discord.Interaction):
 async def xmr_balance(interaction: discord.Interaction):
     await interaction.response.defer()
     balance = xmr.return_balance()
-    await interaction.followup.send(f"現在のXMR残高は{balance:.2f}円です")
+    embed = discord.Embed(title="XMR残高", description=f"現在のXMR残高は{balance:.2f}円です", color=config.GREEN)
+    await interaction.followup.send(embed=embed)
 
 @tree.command(
     name = "xmr-hashrate",
@@ -48,8 +49,9 @@ async def xmr_hashrate(interaction: discord.Interaction, hour: int = 2):
     await interaction.response.defer()
     hashrate = xmr.return_hashrate(hour)
     if hour:
-        await interaction.followup.send(f"過去{hour}時間の平均ハッシュレートは{hashrate:.2f}H/sです")
+        embed = discord.Embed(title="XMRハッシュレート", description=f"過去{hour}時間の平均ハッシュレートは{hashrate:.2f}H/sです", color=config.GREEN)
     else:
-        await interaction.followup.send(f"現在のハッシュレートは{hashrate:.2f}H/sです")
+        embed = discord.Embed(title="XMRハッシュレート", description=f"現在のハッシュレートは{hashrate:.2f}H/sです", color=config.GREEN)
+    await interaction.followup.send(embed=embed)
 
 client.run(config.TOKEN)
