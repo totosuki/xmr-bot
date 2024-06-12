@@ -28,3 +28,10 @@ def return_hashrate(hour: int) -> float:
         res = requests.get(url)
         current_hashrate = res.json()["data"]
         return current_hashrate
+
+def return_member() -> list:
+    url = f"https://api.nanopool.org/v1/xmr/workers/{config.ADDRESS}"
+    res = requests.get(url)
+    data = res.json()["data"]
+    member_list = [data[i]["id"] for i in range(len(data)) if data[i]["hashrate"] != 0]
+    return member_list

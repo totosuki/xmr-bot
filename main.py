@@ -57,4 +57,16 @@ async def xmr_help(interaction: discord.Interaction):
     embed.add_field(name="xmr-address", value="設定されているXMRのアドレスを表示する", inline=False)
     await interaction.followup.send(embed=embed)
 
+@tree.command(
+    name="xmr-member",
+    description="現在マイニング中のメンバーを表示する"
+)
+async def xmr_member(interaction: discord.Interaction):
+    await interaction.response.defer()
+    member_list = xmr.return_member()
+    embed = discord.Embed(title="XMRメンバー", color=config.GREEN)
+    for i in range(len(member_list)):
+        embed.add_field(name=f"{member_list[i]}", value="", inline=False)
+    await interaction.followup.send(embed=embed)
+
 client.run(config.TOKEN)
