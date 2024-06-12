@@ -55,6 +55,7 @@ async def xmr_help(interaction: discord.Interaction):
     embed.add_field(name="xmr-hashrate hour(default=2)", value="平均ハッシュレートを表示する\n`hour = 0` にすると現在のハッシュレートを表示する", inline=False)
     embed.add_field(name="xmr-help", value="XMRボットのヘルプを表示する", inline=False)
     embed.add_field(name="xmr-address", value="設定されているXMRのアドレスを表示する", inline=False)
+    embed.add_field(name="xmr-member", value="現在マイニング中のメンバーを表示する", inline=False)
     await interaction.followup.send(embed=embed)
 
 @tree.command(
@@ -66,7 +67,7 @@ async def xmr_member(interaction: discord.Interaction):
     member_list = xmr.return_member()
     embed = discord.Embed(title="XMR Member", color=config.GREEN)
     for i in range(len(member_list)):
-        embed.add_field(name=f"{member_list[i]}", value="", inline=False)
+        embed.add_field(name=f"{member_list[i]}", value="")
     await interaction.followup.send(embed=embed)
 
 client.run(config.TOKEN)
