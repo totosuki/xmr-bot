@@ -17,8 +17,17 @@ def return_balance() -> float:
     
     return balance * xmr_yen
 
-def return_hashrate(hour: int) -> float:
-    if hour:
+def return_hashrate(hour: int, member: str) -> float | int:
+    if member:
+        url = f"https://api.nanopool.org/v1/xmr/workers/{config.ADDRESS}"
+        res = requests.get(url)
+        data = res.json()["data"]
+        for i in range(len(data)):
+            if data[i]["id"] == member:
+                hashrate = data[i]["hashrate"]
+                return hashrate
+        return 0
+    elif hour:
         url = f"https://api.nanopool.org/v1/xmr/avghashratelimited/{config.ADDRESS}/{hour}"
         res = requests.get(url)
         ave_hashrate = res.json()["data"]
