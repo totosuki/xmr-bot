@@ -14,4 +14,4 @@ ADDRESS=[nanopoolで使用しているwalletアドレス]
 ```
 pip3 install -r requirements.txt
 ```
-6. 最後に、`main.py`を実行したらxmr-botが動きます！
+5. 最後に、`main.py`を実行したらxmr-botが動きます！
