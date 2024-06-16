@@ -10,4 +10,8 @@ TOKEN=[作成したDisocrdボットのトークン]
 ADDRESS=[nanopoolで使用しているwalletアドレス]
 ```
 3. Discordボットを使いたいサーバーに招待する。（scopeは`bot`と`applications.commands`にチェックを入れてください）
-4. 最後に、`main.py`を実行したらxmr-botが動きます！
+4. 以下のコマンドを利用し、ライブラリをインストールする。
+```
+pip3 install -r requirements.txt
+```
+6. 最後に、`main.py`を実行したらxmr-botが動きます！
