@@ -12,7 +12,7 @@ def return_balance() -> float:
     url = f"https://coinmarketcap.com/ja/currencies/monero/"
     res = requests.get(url)
     soup = BeautifulSoup(res.text, "html.parser")
-    elems = soup.select("#section-coin-overview > div.sc-d1ede7e3-0.gNSoet.flexStart.alignBaseline > span")
+    elems = soup.select("#section-coin-overview > div.sc-65e7f566-0.czwNaM.flexStart.alignBaseline > span")
     xmr_yen = float(elems[0].text.translate(str.maketrans({"¥":"",",":""})))
     
     return balance * xmr_yen
