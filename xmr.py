@@ -12,13 +12,22 @@ def return_balance() -> float:
     url = f"https://coinmarketcap.com/ja/currencies/monero/"
     res = requests.get(url)
     soup = BeautifulSoup(res.text, "html.parser")
-    elems = soup.select("#section-coin-overview > div.sc-d1ede7e3-0.gNSoet.flexStart.alignBaseline > span")
+    elems = soup.select("#section-coin-overview > div.sc-65e7f566-0.czwNaM.flexStart.alignBaseline > span")
     xmr_yen = float(elems[0].text.translate(str.maketrans({"¥":"",",":""})))
     
     return balance * xmr_yen
 
-def return_hashrate(hour: int) -> float:
-    if hour:
+def return_hashrate(hour: int, member: str) -> float | int:
+    if member:
+        url = f"https://api.nanopool.org/v1/xmr/workers/{config.ADDRESS}"
+        res = requests.get(url)
+        data = res.json()["data"]
+        for i in range(len(data)):
+            if data[i]["id"] == member:
+                hashrate = data[i]["hashrate"]
+                return hashrate
+        return 0
+    elif hour:
         url = f"https://api.nanopool.org/v1/xmr/avghashratelimited/{config.ADDRESS}/{hour}"
         res = requests.get(url)
         ave_hashrate = res.json()["data"]
@@ -28,3 +37,10 @@ def return_hashrate(hour: int) -> float:
         res = requests.get(url)
         current_hashrate = res.json()["data"]
         return current_hashrate
+
+def return_member() -> list:
+    url = f"https://api.nanopool.org/v1/xmr/workers/{config.ADDRESS}"
+    res = requests.get(url)
+    data = res.json()["data"]
+    member_list = [data[i]["id"] for i in range(len(data)) if data[i]["hashrate"] != 0]
+    return member_list
