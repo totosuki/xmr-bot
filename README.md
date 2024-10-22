@@ -1,17 +1,19 @@
 # xmr-bot
-xmr-botは、[monero](https://www.getmonero.org/)のマイニングプールである[nanopool](https://nanopool.org/)ユーザー向けの、Discordボット。<br>
-Discordサーバーで、簡単にマイニング状況を確認できます。
-## 使い方
-以下の手順で、xmr-botを使用することが出来ます。<br>
-1. [DiscordのDeveloper Potal](https://discord.com/developers/applications)でボットを作成し、intentsを全てオンにする。
-2. xmr-botリポジトリをcloneして`.env`というファイルを作り、以下のように記述する。
+xmr-bot is a Discord bot for [nanopool](https://nanopool.org/) users, a mining pool for [Monero](https://www.getmonero.org/)<br>You can easily check the mining status on your Discord server.
+## How to Use
+Follow the steps below to use xmr-bot.<br>
+1. Create a bot on the [Discord Developer Portal](https://discord.com/developers/applications) and enable all intents.
+2. Clone the xmr-bot repository, create a `.env` file, and add the following.
 ```
-TOKEN=[作成したDisocrdボットのトークン]
-ADDRESS=[nanopoolで使用しているwalletアドレス]
+TOKEN=[Your created Discord bot token]
+ADDRESS=[The wallet address you use on nanopool]
+XMRLANG=EN
 ```
-3. Discordボットを使いたいサーバーに招待する。（scopeは`bot`と`applications.commands`にチェックを入れてください）
-4. 以下のコマンドを利用し、ライブラリをインストールする。
+If XMRLANG is set to JP, it will be changed to the Japanese version
+
+3. Invite the Discord bot to the server where you want to use it (make sure to check the `bot` and `applications.commands` scopes).
+4. Use the following command to install the required libraries
 ```
 pip3 install -r requirements.txt
 ```
-5. 最後に、`main.py`を実行したらxmr-botが動きます！
+5. Finally, run `main.py`, and the xmr-bot will be up and running!
