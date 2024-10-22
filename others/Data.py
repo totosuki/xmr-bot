@@ -26,7 +26,7 @@ class Hashrate:
     def embed_description(hour: int, member: str, hashrate: float | int):
         if member:
             if hashrate:
-                if config.JP:
+                if config.XMRLANG == "JP":
                     return f"{member}のハッシュレートは{hashrate}H/sです"
                 if config.XMRLANG == "EN":
                     return f"{member}'s hashrate is {hashrate}H/s"
