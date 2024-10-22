@@ -48,12 +48,12 @@ async def xmr_hashrate(interaction: discord.Interaction, hour: int = 2, member: 
 )
 async def xmr_help(interaction: discord.Interaction):
     await interaction.response.defer()
-    embed = discord.Embed(title=Help.title, description="XMRボットのコマンド一覧です", color=config.GREEN)
-    embed.add_field(name=Balance.name, value="現在のXMR残高を日本円で表示する", inline=False)
-    embed.add_field(name=Hashrate.name, value="平均ハッシュレートを表示する\n`hour = 0` にすると現在のハッシュレートを表示する", inline=False)
-    embed.add_field(name=Help.name, value="XMRボットのヘルプを表示する", inline=False)
-    embed.add_field(name=Address.name, value="設定されているXMRのアドレスを表示する", inline=False)
-    embed.add_field(name=Member.name, value="現在マイニング中のメンバーを表示する", inline=False)
+    embed = discord.Embed(title=Help.title, description=Help.embed_description, color=config.GREEN)
+    embed.add_field(name=Address.name, value=Address.description, inline=False)
+    embed.add_field(name=Balance.name, value=Balance.description, inline=False)
+    embed.add_field(name=Hashrate.name, value=Hashrate.description, inline=False)
+    embed.add_field(name=Help.name, value=Help.description, inline=False)
+    embed.add_field(name=Member.name, value=Member.description, inline=False)
     await interaction.followup.send(embed=embed)
 
 @tree.command(

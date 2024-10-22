@@ -51,8 +51,10 @@ class Help:
     title = "XMR Hashrate"
     if config.XMRLANG == "JP":
         description = "XMRボットのヘルプを表示する"
+        embed_description = "XMRボットのコマンド一覧です"
     if config.XMRLANG == "EN":
         description = "Displays the help for the XMR bot"
+        embed_description = "List of XMR bot commands"
 
 class Member:
     name = "xmr-member"
