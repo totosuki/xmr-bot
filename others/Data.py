@@ -1,34 +1,63 @@
+import config
+
 class Address:
     name = "xmr-address"
     title = "XMR Address"
-    description = "設定されているXMRのアドレスを表示します"
+    if config.LANG == "JP":
+        description = "設定されているXMRのアドレスを表示する"
+    if config.LANG == "EN":
+        description = "Display the set XMR address"
 
 class Balance:
     name = "xmr-balance"
     title = "XMR Balance"
-    description = "現在のXMR残高を日本円で表示します"
+    if config.LANG == "JP":
+        description = "現在のXMR残高を日本円で表示する"
+    if config.LANG == "EN":
+        description = "Displays the current XMR balance in US dollars"
 
 class Hashrate:
     name = "xmr-hashrate"
     title = "XMR Hashrate"
-    description = "平均ハッシュレートを表示する hour = 0 にすると現在のハッシュレートを表示する"
+    if config.LANG == "JP":
+        description = "平均ハッシュレートを表示する hour=0の場合現在のハッシュレートを表示する"
+    if config.LANG == "EN":
+        description = "Displays the average hashrate. hour=0 to display the current hashrate"
     def embed_description(hour: int, member: str, hashrate: float | int):
         if member:
             if hashrate:
-                return f"{member}のハッシュレートは{hashrate}H/sです"
+                if config.JP:
+                    return f"{member}のハッシュレートは{hashrate}H/sです"
+                if config.LANG == "EN":
+                    return f"{member}'s hashrate is {hashrate}H/s"
             else:
-                return f"{member}はマイニングしていません"
+                if config.LANG == "JP":
+                    return f"{member}はマイニングしていません"
+                if config.LANG == "EN":
+                    return f"{member} is not mining"
         elif hour:
-            return f"過去{hour}時間の平均ハッシュレートは{hashrate:.2f}H/sです"
+            if config.LANG == "JP":
+                return f"過去{hour}時間の平均ハッシュレートは{hashrate:.2f}H/sです"
+            if config.LANG == "EN":
+                return f"The average hashrate for the past {hour} hours is {hashrate:.2f}H/s"
         else:
-            return f"現在のハッシュレートは{hashrate:.2f}H/sです"
+            if config.LANG == "JP":
+                return f"現在のハッシュレートは{hashrate:.2f}H/sです"
+            if config.LANG == "EN":
+                return f"The current hashrate is {hashrate:.2f}H/s"
 
 class Help:
     name = "xmr-help"
     title = "XMR Hashrate"
-    description = "XMRボットのヘルプを表示する"
+    if config.LANG == "JP":
+        description = "XMRボットのヘルプを表示する"
+    if config.LANG == "EN":
+        description = "Displays the help for the XMR bot"
 
 class Member:
     name = "xmr-member"
     title = "XMR Member"
-    description = "現在マイニング中のメンバーを表示する"
+    if config.LANG == "JP":
+        description = "現在マイニング中のメンバーを表示する"
+    if config.LANG == "EN":
+        description = "Displays the current mining members"
