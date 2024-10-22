@@ -1,6 +1,6 @@
 # xmr-bot
 xmr-bot is a Discord bot for [nanopool](https://nanopool.org/) users, a mining pool for [Monero](https://www.getmonero.org/)<br>You can easily check the mining status on your Discord server.
-## How to Use
+## Installation
 Follow the steps below to use xmr-bot.<br>
 1. Create a bot on the [Discord Developer Portal](https://discord.com/developers/applications) and enable all intents.
 ![Screenshot from 2024-10-22 13-13-14](https://github.com/user-attachments/assets/211dd940-b113-4904-8888-fe195459d00f)
