@@ -10,7 +10,7 @@ tree = discord.app_commands.CommandTree(client)
 
 @client.event
 async def on_ready():
-    print('XMRボットがログインしました') 
+    print('XMR bot is ready') 
     await tree.sync()
 
 @tree.command(
