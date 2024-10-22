@@ -9,13 +9,19 @@ def return_balance() -> float:
     balance = float(res.json()["data"])
     
     # 現在のXMRの価格を取得
-    url = f"https://coinmarketcap.com/ja/currencies/monero/"
+    if config.XMRLANG == "JP":
+        url = "https://coinmarketcap.com/ja/currencies/monero/"
+    if config.XMRLANG == "EN":
+        url = "https://coinmarketcap.com/currencies/monero/"
     res = requests.get(url)
     soup = BeautifulSoup(res.text, "html.parser")
     elems = soup.select("#section-coin-overview > div.sc-65e7f566-0.czwNaM.flexStart.alignBaseline > span")
-    xmr_yen = float(elems[0].text.translate(str.maketrans({"¥":"",",":""})))
-    
-    return balance * xmr_yen
+    if config.XMRLANG == "JP":
+        xmr_yen = float(elems[0].text.translate(str.maketrans({"¥":"",",":""})))
+        return balance * xmr_yen
+    if config.XMRLANG == "EN":
+        xmr_usd = float(elems[0].text.translate(str.maketrans({"$":"",",":""})))
+        return balance * xmr_usd
 
 def return_hashrate(hour: int, member: str) -> float | int:
     if member:

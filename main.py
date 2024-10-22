@@ -29,7 +29,7 @@ async def xmr_address(interaction: discord.Interaction):
 async def xmr_balance(interaction: discord.Interaction):
     await interaction.response.defer()
     balance = xmr.return_balance()
-    embed = discord.Embed(title=Balance.title, description=f"現在のXMR残高は{balance:.2f}円です", color=config.GREEN)
+    embed = discord.Embed(title=Balance.title, description=Balance.embed_description(balance), color=config.GREEN)
     await interaction.followup.send(embed=embed)
 
 @tree.command(

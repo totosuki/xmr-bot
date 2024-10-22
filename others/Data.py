@@ -15,6 +15,12 @@ class Balance:
         description = "現在のXMR残高を日本円で表示する"
     if config.XMRLANG == "EN":
         description = "Displays the current XMR balance in US dollars"
+    
+    def embed_description(balance: float):
+        if config.XMRLANG == "JP":
+            return f"現在のXMR残高は{balance:.2f}円です"
+        if config.XMRLANG == "EN":
+            return f"The current XMR balance is ${balance:.2f}"
 
 class Hashrate:
     name = "xmr-hashrate"
